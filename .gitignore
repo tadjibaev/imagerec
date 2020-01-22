@@ -1,0 +1,4 @@
+train_photos/*
+data/*
+.vscode
+node_modules
