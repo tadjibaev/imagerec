@@ -10,12 +10,13 @@ exports.downloadPhotos = function (links, path, done) {
         console.log('OLD FILES DELETED');
         const downloadTasks = _.values(links).map((url) => new Promise((resolve, reject) => {
             const file = fs.createWriteStream(path + '/' + url.split('/').pop());
-            console.log('DOWNLOAD: '+url);
-            const request = http.get(url, function (response) {
+            http.get(url, function (response) {
                 response.pipe(file);
                 console.log('DOWNLOAD: '+url);
             });
+
         }));
+        console.log(done);
         Promise.all(downloadTasks).then(done);
     });
 }
