@@ -3,7 +3,7 @@ var fs = require('fs');
 const path = require('path');
 
 exports.archivePhotos = function(onfinish,photosPath) {
-    var output = fs.createWriteStream(`data/${getDateString()}.zip`);
+    var output = fs.createWriteStream(`archives/${getDateString()}.zip`);
     var archive = archiver('zip', {
         zlib: { level: 9 }
     });
