@@ -4,8 +4,9 @@ var bodyParser = require('body-parser')
 var serveIndex = require('serve-index');
 
 //HELPERS
-const helperDownloader = require('helper/downloader');
-const helperArchiver = require('helper/archiver');
+const helperTrainer = require('./helper/trainer');
+const helperDownloader = require('./helper/downloader');
+const helperArchiver = require('./helper/archiver');
 
 //VARIABLES
 var photosPath = 'train_photos';
