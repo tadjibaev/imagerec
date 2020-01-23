@@ -2,19 +2,21 @@ var archiver = require('archiver');
 var fs = require('fs');
 const path = require('path');
 
-exports.archivePhotos = function(onfinish) {
+exports.archivePhotos = function(onfinish,photosPath) {
     var output = fs.createWriteStream(`data/${getDateString()}.zip`);
     var archive = archiver('zip', {
         zlib: { level: 9 }
     });
     output.on('close', onfinish);
     archive.pipe(output);
-    const directoryPath = path.join(__dirname, 'train_photos');
+    const directoryPath = path.join(__dirname, photosPath);
     fs.readdir(directoryPath, function (err, files) {
-        files.forEach(function (file) {
-            archive.append(fs.createReadStream(directoryPath + '/' + file), { name: file });
-        });
-        archive.finalize();
+        if(files) {
+            files.forEach(function (file) {
+                archive.append(fs.createReadStream(directoryPath + '/' + file), { name: file });
+            });
+            archive.finalize();
+        }
     });
 }
 

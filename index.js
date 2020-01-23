@@ -18,7 +18,7 @@ app.post('/archive', urlencodedParser, (req,res) => {
 	helperDownloader.downloadPhotos(req.body, photosPath, () => {
 		helperArchiver.archivePhotos(() => {
 			helperTrainer.clearServer();
-		});
+		},photosPath);
 	});
 });
 app.use('/photos', express.static(photosPath), serveIndex(photosPath, { 'icons': true }))
