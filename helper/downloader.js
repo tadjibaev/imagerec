@@ -10,7 +10,6 @@ exports.downloadPhotos = function (links, path, done) {
             const file = fs.createWriteStream(path + '/' + url.split('/').pop());
             const request = http.get(url, function (response) {
                 response.pipe(file);
-                resolve("downloadPhotosDone");
             });
         }));
         Promise.all(downloadTasks).then(done);
