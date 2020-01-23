@@ -17,7 +17,7 @@ exports.archivePhotos = function(onfinish) {
     });
 }
 
-exports.getDateString = function() {
+function getDateString() {
     const date = new Date();
     const year = date.getFullYear();
     const month = `${date.getMonth() + 1}`.padStart(2, '0');
