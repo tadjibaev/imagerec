@@ -8,6 +8,7 @@ exports.downloadPhotos = function(links,path,done) {
     rimraf(path+'/*', function () {
         const downloadTasks = _.values(links).map((url) => new Promise((resolve, reject) => {
             const file = fs.createWriteStream(path+'/'+url.split('/').pop());
+            console.log(url);
             const request = http.get(url, function(response) {
                 response.pipe(file);
                 resolve("downloadPhotosDone");
