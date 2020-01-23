@@ -16,6 +16,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 //ROUTES
 app.post('/archive', urlencodedParser, (req,res) => {
 	helperDownloader.downloadPhotos(req.body, photosPath, function() {
+		res.send('done');
 		console.log('DOWNLOAD FINISHED');
 		helperArchiver.archivePhotos(function () {
 			console.log('ARCHIVE FINISHED');
