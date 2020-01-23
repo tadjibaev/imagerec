@@ -1,4 +1,4 @@
-import axios from 'axios'
+const axios = require('axios');
 
 function clearServer() {
     axios.post('http://' + host + ':9003/configuration/clear').then(response => {
