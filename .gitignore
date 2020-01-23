@@ -1,5 +1,4 @@
-train_photos/*
-data/*
-.vscode/8
-node_modules/*
+train_photos
+data
+.vscode
 node_modules
