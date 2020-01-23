@@ -13,6 +13,8 @@ exports.downloadPhotos = function (links, path, done) {
             console.log('DOWNLOAD: '+url);
             const request = http.get(url, function (response) {
                 response.pipe(file);
+            }).then(function(){
+                console.log('DOWNLOAD: '+url);
             });
         }));
         Promise.all(downloadTasks).then(done);
