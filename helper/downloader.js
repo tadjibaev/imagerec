@@ -11,9 +11,8 @@ exports.downloadPhotos = function (links, path, done) {
             const file = fs.createWriteStream(path + '/' + url.split('/').pop());
             http.get(url, function (response) {
                 response.pipe(file);
-                // console.log('DOWNLOAD: ' + url);
             });
         }));
-        Promise.all(downloadTasks).then(done);
+        Promise.all(downloadTasks).then(console.log('done download'));
     });
 }
