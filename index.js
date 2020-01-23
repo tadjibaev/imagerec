@@ -4,7 +4,6 @@ var bodyParser = require('body-parser')
 var serveIndex = require('serve-index');
 
 //HELPERS
-const helperTrainer = require('helper/trainer');
 const helperDownloader = require('helper/downloader');
 const helperArchiver = require('helper/archiver');
 
