@@ -4,7 +4,7 @@ const path = require('path');
 var fs = require('fs');
 var _ = require('underscore');
 
-function downloadPhotos(links,path,done) {
+exports.downloadPhotos = function(links,path,done) {
     rimraf(path+'/*', function () {
         const downloadTasks = _.values(links).map((url) => new Promise((resolve, reject) => {
             const file = fs.createWriteStream(path+'/'+url.split('/').pop());

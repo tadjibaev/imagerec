@@ -23,7 +23,6 @@ app.post('/archive', urlencodedParser, (req,res) => {
 });
 app.use('/photos', express.static(photosPath), serveIndex(photosPath, { 'icons': true }))
 app.use('/archives', express.static('archives'), serveIndex('archives', { 'icons': true }))
-
 app.listen(80, function () {
 	console.log('Server started!');
 });

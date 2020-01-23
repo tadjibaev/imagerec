@@ -1,7 +1,7 @@
 var archiver = require('archiver');
 var fs = require('fs');
 
-function archivePhotos(onfinish) {
+exports.archivePhotos = function(onfinish) {
     var output = fs.createWriteStream(`data/${getDateString()}.zip`);
     var archive = archiver('zip', {
         zlib: { level: 9 }
@@ -17,7 +17,7 @@ function archivePhotos(onfinish) {
     });
 }
 
-function getDateString() {
+exports.getDateString = function() {
     const date = new Date();
     const year = date.getFullYear();
     const month = `${date.getMonth() + 1}`.padStart(2, '0');

@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-function clearServer() {
+exports.clearServer = function() {
     axios.post('http://' + host + ':9003/configuration/clear').then(response => {
         var status = response.data.status;
         if (status == 1) {
