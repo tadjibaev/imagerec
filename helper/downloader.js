@@ -13,6 +13,8 @@ exports.downloadPhotos = function (links, path, done) {
                 response.pipe(file);
             });
         }));
-        Promise.all(downloadTasks).then(console.log('done download'));
+        Promise.all(downloadTasks).then(function(){
+            console.log('done download');
+        });
     });
 }
