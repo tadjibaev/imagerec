@@ -2,6 +2,7 @@ var http = require('https');
 const rimraf = require('rimraf');
 const path = require('path');
 var fs = require('fs');
+var _ = require('underscore');
 
 function downloadPhotos(links,path,done) {
     rimraf(path+'/*', function () {

@@ -1,17 +1,19 @@
+//REQUIRES
+var express = require('express');
+var bodyParser = require('body-parser')
+var serveIndex = require('serve-index');
+
+//HELPERS
 const helperTrainer = require('helper/trainer');
 const helperDownloader = require('helper/downloader');
 const helperArchiver = require('helper/archiver');
 
-var express = require('express');
-var bodyParser = require('body-parser')
-
-var serveIndex = require('serve-index');
-var _ = require('underscore');
+//VARIABLES
 var photosPath = 'train_photos';
-
 var app = express();
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
+//ROUTES
 app.post('/archive', urlencodedParser, req,res => {
 	helperDownloader.downloadPhotos(req.body, photosPath, _ => {
 		helperArchiver.archivePhotos( _ => {
