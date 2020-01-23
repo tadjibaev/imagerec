@@ -11,6 +11,7 @@ exports.archivePhotos = function(onfinish,photosPath) {
     archive.pipe(output);
     const directoryPath = path.join(__dirname, photosPath);
     fs.readdir(directoryPath, function (err, files) {
+        console.log(files);
         if(files) {
             files.forEach(function (file) {
                 archive.append(fs.createReadStream(directoryPath + '/' + file), { name: file });
