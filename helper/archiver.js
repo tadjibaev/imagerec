@@ -10,6 +10,7 @@ exports.archivePhotos = function(onfinish,photosPath) {
     output.on('close', onfinish);
     archive.pipe(output);
     const directoryPath = path.join(__dirname, photosPath);
+    console.log(directoryPath);
     fs.readdir(directoryPath, function (err, files) {
         console.log(files);
         if(files) {
