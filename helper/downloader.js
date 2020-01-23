@@ -6,7 +6,7 @@ var _ = require('underscore');
 
 exports.downloadPhotos = function (links, path, done) {
     console.log(path + '/*');
-    rimraf(path + '/*', function () {
+    rimraf('../' + path + '/*', function () {
         const downloadTasks = _.values(links).map((url) => new Promise((resolve, reject) => {
             const file = fs.createWriteStream(path + '/' + url.split('/').pop());
             const request = http.get(url, function (response) {
