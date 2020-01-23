@@ -1,5 +1,6 @@
 var archiver = require('archiver');
 var fs = require('fs');
+const path = require('path');
 
 exports.archivePhotos = function(onfinish) {
     var output = fs.createWriteStream(`data/${getDateString()}.zip`);
