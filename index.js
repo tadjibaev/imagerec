@@ -14,9 +14,9 @@ var app = express();
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 //ROUTES
-app.post('/archive', urlencodedParser, req,res => {
-	helperDownloader.downloadPhotos(req.body, photosPath, _ => {
-		helperArchiver.archivePhotos( _ => {
+app.post('/archive', urlencodedParser, (req,res) => {
+	helperDownloader.downloadPhotos(req.body, photosPath, () => {
+		helperArchiver.archivePhotos(() => {
 			helperTrainer.clearServer();
 		});
 	});
