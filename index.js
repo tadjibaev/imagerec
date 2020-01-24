@@ -10,6 +10,8 @@ const helperArchiver = require('./helper/archiver');
 const helperAnnotations = require('./controllers/annotations');
 //VARIABLES
 var photosPath = 'train_photos';
+var annotationsPath = 'train_annotations';
+
 var app = express();
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 var supplier_id = null;
@@ -23,19 +25,14 @@ app.post('/archive', urlencodedParser, (req, res) => {
 		helperArchiver.archiveFiles(photosPath, 'photos.zip', () => {
 			console.log('ARCHIVE PHOTOS FINISHED');
 			helperTrainer.clearServer(() => {
-				helperAnnotations.getAnnotations(() => {
-					console.log('http://keysale.se/admin/recognition/dashboard/train?suplier_id='+supplier_id+'&data_type=annotations');
-					axios.post('http://keysale.se/admin/recognition/dashboard/train?suplier_id='+supplier_id+'&data_type=annotations').then(response => {
-						var annotations = response.data;
-						helperDownloader.downloadFiles(annotations, photosPath, function () {
-							console.log('DOWNLOAD ANNOTATIONS FINISHED');
-							helperArchiver.archiveFiles(photosPath, 'annotations.zip', function () {
-								res.send('done');
-							});
+				helperAnnotations.getAnnotations(supplier_id, (annotations) => {
+					helperDownloader.downloadFiles(annotations, annotationsPath, function () {
+						console.log('DOWNLOAD ANNOTATIONS FINISHED');
+						helperArchiver.archiveFiles(annotationsPath, 'annotations.zip', function () {
+							res.send('done');
 						});
-					})
-				}
-				);
+					});
+				});
 			});
 		});
 	});
