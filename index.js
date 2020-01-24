@@ -19,7 +19,7 @@ var potos = [];
 //ROUTES
 app.post('/archive', urlencodedParser, (req, res) => {
 	photos = req.body.photos;
-	supplier_id = supplier_id;
+	supplier_id = req.body.supplier_id;
 	helperDownloader.downloadFiles(photos, photosPath, () => {
 		console.log('DOWNLOAD PHOTOS FINISHED');
 		helperArchiver.archiveFiles(photosPath, 'photos.zip', () => {
