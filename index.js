@@ -24,6 +24,7 @@ app.post('/archive', urlencodedParser, (req, res) => {
 			console.log('ARCHIVE PHOTOS FINISHED');
 			helperTrainer.clearServer(() => {
 				helperAnnotations.getAnnotations(() => {
+					console.log('http://keysale.se/admin/recognition/dashboard/train?suplier_id='+supplier_id+'&data_type=annotations');
 					axios.post('http://keysale.se/admin/recognition/dashboard/train?suplier_id='+supplier_id+'&data_type=annotations').then(response => {
 						var annotations = response.data;
 						helperDownloader.downloadFiles(annotations, photosPath, function () {
