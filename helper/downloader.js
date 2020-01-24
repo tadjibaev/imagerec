@@ -14,6 +14,6 @@ exports.downloadPhotos = function (links, path, done) {
                 resolve('done');
             });
         }));
-        Promise.all(downloadTasks).then(console.log('done download'));
+        Promise.all(downloadTasks).then(done);
     });
 }
