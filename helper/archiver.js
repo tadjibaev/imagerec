@@ -2,8 +2,8 @@ var archiver = require('archiver');
 var fs = require('fs');
 const path = require('path');
 
-exports.archivePhotos = function(onfinish,photosPath) {
-    var output = fs.createWriteStream(`archives/${getDateString()}.zip`);
+exports.archiveFiles = function(photosPath,filename,onfinish) {
+    var output = fs.createWriteStream('archives/'+filename);
     var archive = archiver('zip', {
         zlib: { level: 9 }
     });

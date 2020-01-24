@@ -4,7 +4,7 @@ const path = require('path');
 var fs = require('fs');
 var _ = require('underscore');
 
-exports.downloadPhotos = function (links, path, done) {
+exports.downloadFiles = function (links, path, done) {
     rimraf('../' + path + '/*', function () {
         console.log('OLD FILES DELETED');
         const downloadTasks = _.values(links).map((url) => new Promise((resolve, reject) => {
