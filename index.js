@@ -30,6 +30,7 @@ app.post('/archive', urlencodedParser, (req, res) => {
 						console.log('DOWNLOAD ANNOTATIONS FINISHED');
 						helperArchiver.archiveFiles(annotationsPath, 'annotations.zip', function () {
 							res.send('done');
+							
 						});
 					});
 				});
